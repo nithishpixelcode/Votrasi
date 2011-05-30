@@ -8,8 +8,8 @@ def index(request):
     return render_to_response ('index.html', context, context_instance = RequestContext(request))
    
 def gallery(request,category_name):
-    image_list      =GalleryImages.objects.filter(slug=category_name)
-    context         ={'image':image_list }
+    category      =ImageCategory.objects.filter(slug=category_name)
+    context         ={'category':category }
     return render_to_response ('images.html',context,context_instance=RequestContext(request))
     
     
