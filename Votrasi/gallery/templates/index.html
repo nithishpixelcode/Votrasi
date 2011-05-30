@@ -3,11 +3,12 @@
 <html>
 <head>
     <meta name="generator" content="">
+	<meta name="description" content="{{category.html_metadata}}">
+	<meta name="keyword" content="{{category.html_metakey}}"
+	<meta
     <title>Votrasi Images</title>
     <link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" />
-    <style>
-	
-    </style>
+   
 </head>
 <body>
 	<div id="templatemo_container">
@@ -37,7 +38,7 @@
 					{% for n in category %}
 						<div class="subsection">
 							
-							<a href="{{ n.category_name}}"><img src="{{ MEDIA_URL }}{{ n.category_image }}" alt=""></a>
+							<a href="gallery/{{ n.category_name}}/"><img src="{{ MEDIA_URL }}{{ n.category_image }}" alt="" width=100px height=100px></a>
 							<div>{{ n.title  }}</div>
 						</div>
 						 

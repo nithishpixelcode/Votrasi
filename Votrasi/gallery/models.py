@@ -13,6 +13,8 @@ class GalleryImages(models.Model):
     """
     title           = models.CharField(max_length=20, unique=True)
     slug            = models.SlugField(unique=True)
+    html_metakey    = models.CharField(max_length=200)
+    html_metadata   = models.CharField(max_length=200)
     order           = models.IntegerField(null=True, blank=True)
     date_created    = models.DateTimeField(auto_now_add=True)
     is_publish      = models.BooleanField(default=True)
@@ -47,11 +49,14 @@ class GalleryImages(models.Model):
 class ImageCategory(models.Model):
     """
         Cerate new category
+        @rtype: string
     """
     
     date_created    = models.DateTimeField(auto_now_add=True)
     title           = models.CharField(max_length=20, unique=True)
     slug            = models.SlugField(unique=True)
+    html_metakey    = models.CharField(max_length=200)
+    html_metadata   = models.CharField(max_length=200)
     category_name   = models.CharField(max_length=30)
     category_image  = RemovableImageField(upload_to='images/upload/catimg', null=True, blank=True)
     
@@ -66,4 +71,6 @@ class ImageCategory(models.Model):
         return self.category_name;
     def get_absolute_url(self):
         return '%s/' % (self.slug)
+    
+
     
