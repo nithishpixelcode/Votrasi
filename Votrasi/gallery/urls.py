@@ -13,6 +13,6 @@ urlpatterns = patterns('gallery.views',
     
     (r'^$', 'index'),
     (r'^gallery/(?P<category_name>[-\w]+)/$','gallery'),
-    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    #(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     
 )

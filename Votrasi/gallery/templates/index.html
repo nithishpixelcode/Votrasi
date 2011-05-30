@@ -1,31 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
-
-<html>
-<head>
-    <meta name="generator" content="">
-	<meta name="description" content="{{category.html_metadata}}">
-	<meta name="keyword" content="{{category.html_metakey}}"
-	<meta
-    <title>Votrasi Images</title>
-    <link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" />
-   
-</head>
-<body>
-	<div id="templatemo_container">
-		<div id="templatemo_top">
-			<a href="#" class="home" title="home">Home</a>
-			<a href="#" class="contactus" title="Contact Us">contact us</a>
-		</div>
-		<div id="templatemo_header">
-			<div id="templatemo_header_left">
-				<div id="templatemo_site_slogan">Share your photos</div>
-				<div id="templatemo_site_title">Log here</div>
-			</div>
-			<div id="templatemo_header_right"></div>
-		</div>
-		
-		<div id="templatemo_content">
-			<div id="templatemo_left_column">
+{% extends "base.html" %}
+{% block content %}
 				<h1>Welcome to Votrasi Images</h1>
 				
 				<p class="text_area">Lorem ipsum dolor sit amet, consectetuer 
@@ -46,37 +20,4 @@
 					
 					<div class="more"><a href="#">More &gt;</a></div>
 				</div>
-			<div>
-		</div>
-	</div>
-	<div id="templatemo_right_column">
-		<div class="templatemo_section2">
-			<h2>Facebook Fanbox</h2>
-			<div id="fb-root">
-				
-			</div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1">
-				
-			</script>
-			<fb:like-box href="http://www.facebook.com/votrasi" width="200" show_faces="true" stream="false" header="false">
-				
-			</fb:like-box>
-                
-		</div>       
-	</div>
-	
-	
-   
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-	
-
+{% endblock %}
