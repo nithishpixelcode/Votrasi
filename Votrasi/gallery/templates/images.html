@@ -2,14 +2,14 @@
 
 {% block content %}
     <div class="templatemo_section1">
-        <h1 class="newphototitle"> You are now in:{{ category }}</h1>
+        <h1 class="newphototitle"> You are now in: {{ imageslist }}</h1>
         <div id="gallery">
              
-            {% for n in category.galleryimages_set.all %}
+            {% for n in imageslist %}
            
                 <div class="subsection">
                        
-                    <a href="{{ MEDIA_URL }}{{ n.image  }}" title="{{n.html_metadata}}" ><img src="{{ MEDIA_URL }}{{ n.image  }}" alt="" width=200px height=250px ></a>
+                    <a href="{{ MEDIA_URL }}{{ n.image  }}" title="{{n.html_metadata}}" ><img src="{{ MEDIA_URL }}{{ n.image }}" alt="{{ MEDIA_URL }}{{n.image}}" width=200px height=250px ></a>
                     <div>{{ n.title  }}</div>
                     <div>{{n.date_created }}</div>
                      
