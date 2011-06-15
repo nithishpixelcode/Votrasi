@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+				<h1>Welcome to Votrasi Images</h1>
+				
+				<p class="text_area">Lorem ipsum dolor sit amet, consectetuer 
+					adipiscing elit. Nunc quis sem nec tellus blandit tincidunt. Duis vitae 
+					velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas
+					adipiscing elementum ipsum. Pellentesque vitae magna.
+				</p>
+				<div class="templatemo_section1">
+					<h1 class="newphototitle">Category List </h1>
+					{% for n in category  %}
+						<div class="subsection">
+							
+							<a href="gallery/{{ n.name}}/"><img src="{{ MEDIA_URL }}{{ n.category_image }}" alt="" width=100px height=100px></a>
+							<div>{{ n.title  }}</div>
+						</div>
+						 
+					{% endfor %}	
+					
+					<div class="more"><a href="#">More &gt;</a></div>
+				</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to {{ catname|safe }} Category </h1>
+    <p class="text_area">{{ catinfo|safe }}</p>
+    <div class="templatemo_section1">
+					<h1 class="newphototitle">Image List </h1>
+					{% for n in imageslist %}
+						<div class="subsection">
+							
+							<a   rel="group"  href="{{ MEDIA_URL }}{{ n.image  }}" title="{{n.img_info}}"  ><img src="{{ MEDIA_URL }}{{ n.image }}" alt="{{ MEDIA_URL }}{{n.image}}" width=100px height=100px ></a>
+                            <div>{{ n.title  }}</div>
+                            <div>{{n.date_created }}</div>
+						</div>
+						 
+					{% endfor %}	
+					
+					<div class="more"><br><br><br></div>
+				</div>
+{% endblock %}

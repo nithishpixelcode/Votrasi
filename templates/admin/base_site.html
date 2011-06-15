@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans "Votrasi Gallery Admin Panel " %}{% endblock %}
+
+{% block extrahead %}
+
+<script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+        tinyMCE.init({
+                // General options
+                mode : "textareas",
+                theme : "advanced",
+                plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                // Theme options
+                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                theme_advanced_resizing : true,
+		//file_browser_callback : 'CustomFileBrowser',
+        });
+function CustomFileBrowser(field_name, url, type, win) {
+	
+
+
+}
+function myFileBrowser (field_name, url, type, win) {}
+
+</script>
+    
+    <style>
+	/*#header { background: url({{ MEDIA_URL }}images/site/head.png); height: 50px; border-bottom: 2px solid black; background-repeat: no-repeat; background-color: black; }*/
+	#branding { margin: 35px 0 0 40px;}
+	#branding h1 { font-size: 21px; font-weight: bold; color: black; }
+	#user-tools { margin: 30px 40px 0 0; color: black; }
+	#user-tools a { color: black !important; }
+	#result_list { width: 80% !important; }
+	p { margin 12px 0; }
+</style>
+{% endblock %}
+{% block branding %}
+<h1 id="site-name">{% trans "Votrasi  Admin Panel " %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+    
+    
+
