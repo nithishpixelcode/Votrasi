@@ -4,37 +4,41 @@ from datetime import datetime
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules([], ["^widgets\.RemovableImageField"])
 
-class ImageCategory(models.Model):
+class Category(models.Model):
     
     date_created = models.DateTimeField(auto_now_add=True)
+    title  = models.CharField(max_length=20, unique=True)
     slug = models.SlugField(unique=True)
-    cat_info =models.TextField(null=False)
-    name = models.CharField(max_length=30,  unique=True)
+    category_description =models.TextField(null=False)
+    category_name = models.CharField(max_length=30,  unique=True)
     category_image = RemovableImageField(upload_to='images/upload/catimg', null=True, blank=True)
+    is_publish = models.BooleanField(default=True)
     
     class Meta:
         ordering = ['id',]
+	verbose_name_plural = 'Categories'
         
     def __unicode__(self):
       
-        return self.name 
+        return self.category_name
         
     def get_absolute_url(self):
         return '%s/' % (self.slug)
 
-class GalleryImage(models.Model):
+class CategoryImage(models.Model):
    
     title  = models.CharField(max_length=20, unique=True)
     slug= models.SlugField(unique=True)
-    img_info =models.TextField(null=True)
     order = models.IntegerField(null=True, blank=True)
     date_created= models.DateTimeField(auto_now_add=True)
-    is_publish = models.BooleanField(default=True)
-    image_category= models.ForeignKey('ImageCategory', to_field='name')  
+    image_category= models.ForeignKey('Category', to_field='category_name')  
     image = RemovableImageField(upload_to='images/upload', null=True, blank=True)
+    image_description =models.TextField(null=True)
+    is_publish = models.BooleanField(default=True)
     
     class Meta:
         ordering = ['order',]
+	
         
     def __unicode__(self):
        
@@ -42,5 +46,8 @@ class GalleryImage(models.Model):
         
     def get_absolute_url(self):
         return '%s/' % (self.slug)
+
+   
+	
 
 
