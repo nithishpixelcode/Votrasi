@@ -1,23 +1,25 @@
 {% extends "base.html" %}
- {% load pagination_tags %}
+{% load pagination_tags %}
+
 {% block content %}
     <h1>Welcome to {{ catname|safe }} Category </h1>
     <p class="text_area">{{ catinfo|safe }}</p>
     <div class="templatemo_section1">
 					<h1 class="newphototitle">Image List </h1>
+					{% autopaginate imageslist 9 %}
 					{% for n in imageslist %}
 						<div class="subsection">
 							
 							<a   rel="group"  href="{{ MEDIA_URL }}{{ n.image  }}" title="{{n.image_description}}"  ><img src="{{ MEDIA_URL }}{{ n.image }}" alt="{{ MEDIA_URL }}{{n.title}}" width=100px height=70px ></a>
                             <div>{{ n.title  }}</div>
                             <div>{{n.date_created }}</div>
-<div><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=105929102833606&amp;xfbml=1"></script><fb:like href="{{ MEDIA_URL }}{{ n.image }}" send="true" layout="button_count" width="150" show_faces="true" font=""></fb:like></div>
+
 						</div>
 						 
 					{% endfor %}	
-					
-					<div class="more">{% autopaginate imageslist 3 %}</div>
-				</div>
+					{% paginate %}
+					<div class="more"></div>
+ </div>
 
 
 {% endblock %}

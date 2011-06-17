@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
 {% block script %}
 {% endblock %}
 {% block content %}
@@ -10,6 +11,7 @@ velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Maecenas
 adipiscing elementum ipsum. Pellentesque vitae magna.</p>
 <div class="templatemo_section1">
 	<h1 class="newphototitle">Category List </h1>
+	{% autopaginate category 9 %}
 	{% for n in category  %}
 		<div class="subsection">
 							
@@ -18,7 +20,7 @@ adipiscing elementum ipsum. Pellentesque vitae magna.</p>
 		</div>
 								 
 	{% endfor %}	
-					
-	<div class="more"><a href="#">More &gt;</a></div>
+	{% paginate %}				
+	<div class="more"></div>
 </div>
 {% endblock %}

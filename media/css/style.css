@@ -148,11 +148,11 @@ img {
 }
 .templatemo_section1 .newphototitle{
 	padding: 10px 0px 10px 50px;
-	background: url(images/templatemo_newphoto_icon.gif) left center no-repeat;
+	/*background: url(images/templatemo_newphoto_icon.gif) left center no-repeat; */
 }
 .templatemo_section1 .latestnews{
 	padding: 10px 0px 10px 50px;
-	background: url(images/templatemo_latestnews_icon.gif) left center no-repeat;
+	/*background: url(images/templatemo_latestnews_icon.gif) left center no-repeat;*/
 }
 
 .templatemo_section1 .subsection {
@@ -249,7 +249,7 @@ img {
 .more {
 	clear: both;
 	margin: 10px 0px 5px 0px;
-	text-align: right;
+	
 }
 
 /* ----- Footer ----- */

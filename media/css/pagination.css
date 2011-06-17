@@ -1,0 +1,41 @@
+/** PAGINATOR **/
+
+.pagination {
+	text-align: center; 
+	font:normal 1.4em arial; 
+	width: 570px; float:left; 
+	height: 40px; 
+	padding-top: 20px;
+
+}
+.pagination a {
+	cursor: pointer;
+}
+.pagination a:hover {
+ 	text-decoration: none; 
+}
+
+.pagination .prev,
+.pagination .next {
+	border:1px solid #ccc;
+	background-color:#171616;
+	color:#aaa;
+	font-weight:normal;
+	padding-left: 5px; 
+	padding-right: 5px;
+}
+
+
+.pagination .page {
+	border:1px solid #ccc;
+	background-color:#171616;
+	color:#aaa;
+	font-weight:normal;
+	margin: 2px 2px 2px 2px;
+	padding-left: 5px; 
+	padding-right: 5px;
+}
+
+
+
+

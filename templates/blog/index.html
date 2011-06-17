@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load pagination_tags %}
 {% block title %}{% if category %}Archives for {{ category.title }}{% else %}Blog{% endif %} &raquo;&nbsp; Votrasi Image{% endblock %}
 
 {% block extra_style %}
@@ -34,6 +34,7 @@
 <div id="main_content">
     {% block posts %}
     <div id="blog_container">
+    {% autopaginate posts 20 %}
     {% for post in posts %}
         <div class="post-entry">
             <div class="calendar-div">
@@ -52,6 +53,7 @@
             </div>
         </div>
     {% endfor %}
+    {% paginate %}
     </div>
     {% endblock %}
     <div id="blog-sidebar">

@@ -17,3 +17,25 @@ def gallery(request,name):
     catname=ic.category_name
     context         ={'imageslist':images,'catinfo':catinfo,'catname':catname}
     return render_to_response ('images.html',context,context_instance=RequestContext(request))
+
+def contact_form(request):
+    comment = request.POST.get('comment', '')
+    email = request.POST.get('email', '')
+    name = request.POST.get('name', '')
+    if comment == 'Comments':
+        comment = ''
+    if name == 'Name':
+        name = ''
+    if email == 'Email Address':
+        email = ''
+    if comment and email and name:
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            a = form.save()
+            to_return = {'message' : 'Thanks for contacting us. We should get back to you shortly.', 'success' : True }
+        else:
+            print form.errors
+            to_return = {'message' : 'Please enter a valid email address.', 'success' : False }
+    else:
+        to_return = {'message' : 'Some of the required fields are missing.', 'success' : False }    
+    return HttpResponse(simplejson.dumps(to_return), mimetype='application/json')    

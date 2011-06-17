@@ -49,5 +49,16 @@ class CategoryImage(models.Model):
 
    
 	
-
+class ContactUs(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    comment = models.TextField()
+    publish_date = models.DateTimeField(default=datetime.now())
+    
+    class Meta:
+        ordering = ['publish_date']
+        
+    def __unicode__(self):
+        return self.name
+    
 

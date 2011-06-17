@@ -106,7 +106,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
   KEY `auth_permission_e4470c6e` (`content_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add permission',1,'add_permission'),(2,'Can change permission',1,'change_permission'),(3,'Can delete permission',1,'delete_permission'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add user',3,'add_user'),(8,'Can change user',3,'change_user'),(9,'Can delete user',3,'delete_user'),(10,'Can add message',4,'add_message'),(11,'Can change message',4,'change_message'),(12,'Can delete message',4,'delete_message'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add site',7,'add_site'),(20,'Can change site',7,'change_site'),(21,'Can delete site',7,'delete_site'),(22,'Can add log entry',8,'add_logentry'),(23,'Can change log entry',8,'change_logentry'),(24,'Can delete log entry',8,'delete_logentry'),(25,'Can add category',9,'add_category'),(26,'Can change category',9,'change_category'),(27,'Can delete category',9,'delete_category'),(28,'Can add category image',10,'add_categoryimage'),(29,'Can change category image',10,'change_categoryimage'),(30,'Can delete category image',10,'delete_categoryimage');
+INSERT INTO `auth_permission` VALUES (1,'Can add permission',1,'add_permission'),(2,'Can change permission',1,'change_permission'),(3,'Can delete permission',1,'delete_permission'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add user',3,'add_user'),(8,'Can change user',3,'change_user'),(9,'Can delete user',3,'delete_user'),(10,'Can add message',4,'add_message'),(11,'Can change message',4,'change_message'),(12,'Can delete message',4,'delete_message'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add site',7,'add_site'),(20,'Can change site',7,'change_site'),(21,'Can delete site',7,'delete_site'),(22,'Can add log entry',8,'add_logentry'),(23,'Can change log entry',8,'change_logentry'),(24,'Can delete log entry',8,'delete_logentry'),(25,'Can add category',9,'add_category'),(26,'Can change category',9,'change_category'),(27,'Can delete category',9,'delete_category'),(28,'Can add category image',10,'add_categoryimage'),(29,'Can change category image',10,'change_categoryimage'),(30,'Can delete category image',10,'delete_categoryimage'),(31,'Can add user profile',11,'add_userprofile'),(32,'Can change user profile',11,'change_userprofile'),(33,'Can delete user profile',11,'delete_userprofile'),(34,'Can add category',12,'add_category'),(35,'Can change category',12,'change_category'),(36,'Can delete category',12,'delete_category'),(37,'Can add post',13,'add_post'),(38,'Can change post',13,'change_post'),(39,'Can delete post',13,'delete_post'),(40,'Can add comment',14,'add_comment'),(41,'Can change comment',14,'change_comment'),(42,'Can delete comment',14,'delete_comment');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,6 +208,148 @@ LOCK TABLES `auth_user_user_permissions` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `blog_category`
+--
+
+DROP TABLE IF EXISTS `blog_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_category`
+--
+
+LOCK TABLES `blog_category` WRITE;
+/*!40000 ALTER TABLE `blog_category` DISABLE KEYS */;
+INSERT INTO `blog_category` VALUES (1,'Photo','photo');
+/*!40000 ALTER TABLE `blog_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_comment`
+--
+
+DROP TABLE IF EXISTS `blog_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` longtext NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `approve` tinyint(1) NOT NULL,
+  `submit_date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_comment_cc846901` (`author_id`),
+  KEY `blog_comment_699ae8ca` (`post_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_comment`
+--
+
+LOCK TABLES `blog_comment` WRITE;
+/*!40000 ALTER TABLE `blog_comment` DISABLE KEYS */;
+INSERT INTO `blog_comment` VALUES (1,'Test','<p>dfgdssd</p>',1,1,1,'2011-06-17 00:00:10');
+/*!40000 ALTER TABLE `blog_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_post`
+--
+
+DROP TABLE IF EXISTS `blog_post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `content` longtext NOT NULL,
+  `publish` tinyint(1) NOT NULL,
+  `publish_date` datetime NOT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `blog_post_cc846901` (`author_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_post`
+--
+
+LOCK TABLES `blog_post` WRITE;
+/*!40000 ALTER TABLE `blog_post` DISABLE KEYS */;
+INSERT INTO `blog_post` VALUES (1,'Test Blog','testblog','','<p>\"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur  sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt  mollit anim id est laborum.\"</p>',1,'2011-06-17 00:00:10',1);
+/*!40000 ALTER TABLE `blog_post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_post_categories`
+--
+
+DROP TABLE IF EXISTS `blog_post_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_post_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `post_id` (`post_id`,`category_id`),
+  KEY `blog_post_categories_699ae8ca` (`post_id`),
+  KEY `blog_post_categories_42dc49bc` (`category_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_post_categories`
+--
+
+LOCK TABLES `blog_post_categories` WRITE;
+/*!40000 ALTER TABLE `blog_post_categories` DISABLE KEYS */;
+INSERT INTO `blog_post_categories` VALUES (2,1,1);
+/*!40000 ALTER TABLE `blog_post_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blog_userprofile`
+--
+
+DROP TABLE IF EXISTS `blog_userprofile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_userprofile` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `website` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_userprofile`
+--
+
+LOCK TABLES `blog_userprofile` WRITE;
+/*!40000 ALTER TABLE `blog_userprofile` DISABLE KEYS */;
+/*!40000 ALTER TABLE `blog_userprofile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -226,7 +368,7 @@ CREATE TABLE `django_admin_log` (
   PRIMARY KEY (`id`),
   KEY `django_admin_log_fbfc09f1` (`user_id`),
   KEY `django_admin_log_e4470c6e` (`content_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +377,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2011-06-16 08:10:18',1,9,'1','Friends',1,''),(2,'2011-06-16 08:11:12',1,10,'1','Abin-01',1,''),(3,'2011-06-16 08:12:23',1,10,'2','Rhay Lind',1,''),(4,'2011-06-16 08:14:01',1,10,'3','Prithi',1,''),(5,'2011-06-16 08:16:02',1,10,'4','Shafi M',1,''),(6,'2011-06-16 08:17:35',1,10,'5','Simon Jude X',1,''),(7,'2011-06-16 08:19:46',1,10,'6','Geethu sandeep Rhay ',1,'');
+INSERT INTO `django_admin_log` VALUES (1,'2011-06-16 08:10:18',1,9,'1','Friends',1,''),(2,'2011-06-16 08:11:12',1,10,'1','Abin-01',1,''),(3,'2011-06-16 08:12:23',1,10,'2','Rhay Lind',1,''),(4,'2011-06-16 08:14:01',1,10,'3','Prithi',1,''),(5,'2011-06-16 08:16:02',1,10,'4','Shafi M',1,''),(6,'2011-06-16 08:17:35',1,10,'5','Simon Jude X',1,''),(7,'2011-06-16 08:19:46',1,10,'6','Geethu sandeep Rhay ',1,''),(8,'2011-06-17 00:00:48',1,12,'1','Photo',1,''),(9,'2011-06-17 00:01:46',1,13,'1','Test',1,''),(10,'2011-06-17 00:02:35',1,14,'1','',1,''),(11,'2011-06-17 07:32:10',1,9,'1','Friends',2,'Changed category_description and category_image.'),(12,'2011-06-17 07:32:23',1,9,'1','Friends',2,'Changed category_image.'),(13,'2011-06-17 07:38:39',1,13,'1','Test Blog',2,'Changed title, slug, image and content.'),(14,'2011-06-17 10:52:36',1,9,'2','Flower',1,''),(15,'2011-06-17 10:53:08',1,10,'7','flower1',1,''),(16,'2011-06-17 10:53:31',1,10,'8','flower2',1,''),(17,'2011-06-17 10:53:54',1,10,'9','flower3',1,''),(18,'2011-06-17 10:54:17',1,10,'10','flower4',1,''),(19,'2011-06-17 10:54:35',1,10,'11','flower5',1,''),(20,'2011-06-17 10:54:52',1,10,'12','flower6',1,'');
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +395,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `app_label` (`app_label`,`model`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +404,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'permission','auth','permission'),(2,'group','auth','group'),(3,'user','auth','user'),(4,'message','auth','message'),(5,'content type','contenttypes','contenttype'),(6,'session','sessions','session'),(7,'site','sites','site'),(8,'log entry','admin','logentry'),(9,'category','gallery','category'),(10,'category image','gallery','categoryimage');
+INSERT INTO `django_content_type` VALUES (1,'permission','auth','permission'),(2,'group','auth','group'),(3,'user','auth','user'),(4,'message','auth','message'),(5,'content type','contenttypes','contenttype'),(6,'session','sessions','session'),(7,'site','sites','site'),(8,'log entry','admin','logentry'),(9,'category','gallery','category'),(10,'category image','gallery','categoryimage'),(11,'user profile','blog','userprofile'),(12,'category','blog','category'),(13,'post','blog','post'),(14,'comment','blog','comment');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +478,7 @@ CREATE TABLE `gallery_category` (
   UNIQUE KEY `title` (`title`),
   UNIQUE KEY `slug` (`slug`),
   UNIQUE KEY `category_name` (`category_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,7 +487,7 @@ CREATE TABLE `gallery_category` (
 
 LOCK TABLES `gallery_category` WRITE;
 /*!40000 ALTER TABLE `gallery_category` DISABLE KEYS */;
-INSERT INTO `gallery_category` VALUES (1,'2011-06-16 08:10:18','My Friends','my-friends','<p><span style=\"color: #ffffff;\"><font face=\"georgia, bookman old style, palatino linotype, book antiqua, palatino, trebuchet ms, helvetica, garamond, sans-serif, arial, verdana, avante garde, century gothic, comic sans ms, times, times new roman, serif\">When  we honestly ask ourselves which person in our lives mean the most to  us, we often find that it is those who, instead of giving advice,  solutions, or cures, have chosen rather to share our pain and touch our  wounds with a warm and tender hand.&nbsp; The friend who can be silent with  us in a moment of despair or confusion, who can stay with us in an hour  of grief and bereavement, who can tolerate not knowing, not curing, not  healing and face with us the reality of our powerlessness, that is a  friend who cares.</font></span></p>','Friends','images/upload/catimg/abi_4.jpg',1);
+INSERT INTO `gallery_category` VALUES (1,'2011-06-16 08:10:18','My Friends','my-friends','<p><span style=\"color: #ffffff;\"><span style=\"font-family: georgia,bookman old style,palatino linotype,book antiqua,palatino,trebuchet ms,helvetica,garamond,sans-serif,arial,verdana,avante garde,century gothic,comic sans ms,times,times new roman,serif;\">When  we honestly ask ourselves which person in our lives mean the most to  us, we often find that it is those who, instead of giving advice,  solutions, or cures, have chosen rather to share our pain and touch our  wounds with a warm and tender hand.&nbsp; The friend who can be silent with  us in a moment of despair or confusion, who can stay with us in an hour  of grief and bereavement, who can tolerate not knowing, not curing, not  healing and face with us the reality of our powerlessness, that is a  friend who cares.</span></span></p>','Friends','images/upload/catimg/100_2101.JPG',1),(2,'2011-06-17 10:52:36','Flower','flower','<p>A <strong>flower</strong>, sometimes known as a bloom or blossom, is the reproductive structure found in flowering plants (plants of the division <span class=\"mw-redirect\">Magnoliophyta</span>,  also called angiosperms). The biological function of a flower is to  effect reproduction, usually by providing a mechanism for the union of  sperm with eggs. Flowers may facilitate outcrossing (fusion of sperm and  eggs from different individuals in a population) or allow selfing  (fusion of sperm and egg from the same flower). Some flowers produce diaspores without fertilization (parthenocarpy).  Flowers contain sporangia and are the site where gametophytes develop.  Flowers give rise to fruit and seeds. Many flowers have evolved to be  attractive to animals, so as to cause them to be vectors for the  transfer of pollen</p>','Flower','images/upload/catimg/AnimationFlowers.jpg',1);
 /*!40000 ALTER TABLE `gallery_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +512,7 @@ CREATE TABLE `gallery_categoryimage` (
   UNIQUE KEY `title` (`title`),
   UNIQUE KEY `slug` (`slug`),
   KEY `gallery_categoryimage_94f3c2bc` (`image_category_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,7 +521,7 @@ CREATE TABLE `gallery_categoryimage` (
 
 LOCK TABLES `gallery_categoryimage` WRITE;
 /*!40000 ALTER TABLE `gallery_categoryimage` DISABLE KEYS */;
-INSERT INTO `gallery_categoryimage` VALUES (1,'Abin-01','abin-01',1,'2011-06-16 08:11:12','Friends','images/upload/1_2.jpg','<p>Abin Jose ... Always with girls ....</p>',1),(2,'Rhay Lind','rhay-lind',2,'2011-06-16 08:12:23','Friends','images/upload/100_0676.JPG','<p>Rhay ,He is good in all ....</p>',1),(3,'Prithi','prithi',3,'2011-06-16 08:14:01','Friends','images/upload/100_0674.JPG','<p>He is doing BCA . Good in Programming</p>',1),(4,'Shafi M','shafi-m',4,'2011-06-16 08:16:02','Friends','images/upload/03112008288.jpg','<p>Shafi ,He is always online , never chat with boys .. only girls ....</p>',1),(5,'Simon Jude X','simon-jude-x',5,'2011-06-16 08:17:35','Friends','images/upload/100_4570.JPG','<p>Simon Jude ,&nbsp; I dont knw more about him ... But also he is my friend ,</p>',1),(6,'Geethu sandeep Rhay ','geethu-sandeep-rhay',6,'2011-06-16 08:19:46','Friends','images/upload/100_2120.JPG','<p>A Good tram .... Always they sing for me .!!</p>',1);
+INSERT INTO `gallery_categoryimage` VALUES (1,'Abin-01','abin-01',1,'2011-06-16 08:11:12','Friends','images/upload/1_2.jpg','<p>Abin Jose ... Always with girls ....</p>',1),(2,'Rhay Lind','rhay-lind',2,'2011-06-16 08:12:23','Friends','images/upload/100_0676.JPG','<p>Rhay ,He is good in all ....</p>',1),(3,'Prithi','prithi',3,'2011-06-16 08:14:01','Friends','images/upload/100_0674.JPG','<p>He is doing BCA . Good in Programming</p>',1),(4,'Shafi M','shafi-m',4,'2011-06-16 08:16:02','Friends','images/upload/03112008288.jpg','<p>Shafi ,He is always online , never chat with boys .. only girls ....</p>',1),(5,'Simon Jude X','simon-jude-x',5,'2011-06-16 08:17:35','Friends','images/upload/100_4570.JPG','<p>Simon Jude ,&nbsp; I dont knw more about him ... But also he is my friend ,</p>',1),(6,'Geethu sandeep Rhay ','geethu-sandeep-rhay',6,'2011-06-16 08:19:46','Friends','images/upload/100_2120.JPG','<p>A Good tram .... Always they sing for me .!!</p>',1),(7,'flower1','flower1',1,'2011-06-17 10:53:08','Flower','images/upload/AnimationFlowers.jpg','<p>flower1</p>',1),(8,'flower2','flower2',2,'2011-06-17 10:53:31','Flower','images/upload/big1.jpg','<p>2</p>',1),(9,'flower3','flower3',3,'2011-06-17 10:53:54','Flower','images/upload/big2.jpg','<p>3</p>',1),(10,'flower4','flower4',4,'2011-06-17 10:54:17','Flower','images/upload/flowers3d02.jpg','<p>4</p>',1),(11,'flower5','flower5',5,'2011-06-17 10:54:35','Flower','images/upload/jungle-flower-1024-393990.jpeg','<p>5</p>',1),(12,'flower6','flower6',6,'2011-06-17 10:54:52','Flower','images/upload/Purple-Flower-378664.jpeg','<p>6</p>',1);
 /*!40000 ALTER TABLE `gallery_categoryimage` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -392,4 +534,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-06-16 19:06:22
+-- Dump completed on 2011-06-17 21:25:53
