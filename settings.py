@@ -63,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'Votrasi.urls'
@@ -79,8 +80,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'gallery',
     'filebrowser',
+    'blog',
+    'pagination',
 )
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
 TINYMCE_FILEBROWSER = False
+FILEBROWSER_URL_FILEBROWSER_MEDIA = '/media/filebrowser/'

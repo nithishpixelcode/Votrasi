@@ -16,6 +16,10 @@ packages:
 	
 	* Python Imaging Library (http://www.pythonware.com/products/pil/)
 	* South (http://south.aeracode.org/)
+	* Install pagination from the root folder 
+		cd Site/Votrasi/paginationsetup/
+		sudo python setup.py install
+
 
 Installation
 ==============
@@ -43,11 +47,11 @@ Installation
    
 
 
-
 5. Run the server and head over to the admin.
 
      http://localhost:8000/admin/
 
 
-
+    User Name  :admin
+    Password   :admin
 

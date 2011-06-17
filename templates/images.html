@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+ {% load pagination_tags %}
 {% block content %}
     <h1>Welcome to {{ catname|safe }} Category </h1>
     <p class="text_area">{{ catinfo|safe }}</p>
@@ -16,6 +16,8 @@
 						 
 					{% endfor %}	
 					
-					<div class="more"><br><br><br></div>
+					<div class="more">{% autopaginate imageslist 3 %}</div>
 				</div>
+
+
 {% endblock %}
