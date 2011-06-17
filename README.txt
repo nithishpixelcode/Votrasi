@@ -2,9 +2,6 @@ Future work
 =============
 
     * Google sitemap 
-    * Blog
-    * Page navagation
-    * Admin Thumbnail
     * Flicker API
     * Contact Us From
 
